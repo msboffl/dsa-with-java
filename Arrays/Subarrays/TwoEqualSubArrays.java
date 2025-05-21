@@ -1,38 +1,46 @@
 package Arrays.Subarrays;
 
 public class TwoEqualSubArrays {
-    public static void printTwoSubArrays(int[] arr) {
-        int n = arr.length;
-        int leftSum = 0;
-        for (int i = 0; i < n; i++) {
-            leftSum += arr[i];
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 5, 5};
 
+        // Brute Force
+        /* int leftSum = 0;
+        for(int i = 0; i < arr.length; i++) {
             int rightSum = 0;
-            for (int j = i + 1; j < n; j++) {
+            for(int j = i+1; j < arr.length; j++) {
                 rightSum += arr[j];
             }
+            leftSum += arr[i];
 
             if (leftSum == rightSum) {
-                System.out.println("First Subarray:");
-                for (int k = 0; k <= i; k++) {
-                    System.out.print(arr[k] + " ");
-                }
-                System.out.println();
-
-                System.out.println("Second Subarray:");
-                for (int k = i + 1; k < n; k++) {
-                    System.out.print(arr[k] + " ");
-                }
-                System.out.println();
-                return; // Exit after finding first such split
+                System.out.println(leftSum);
+                System.out.println(rightSum);
             }
         }
 
-        System.out.println("No such two subarrays with equal sum.");
-    }
+        if (leftSum == 0) {
+            System.out.println("Not Found Equal Subarrays");
+        }*/
 
-    public static void main(String[] args) {
-        int[] arr = {1, 2, 3, 4, 5, 5};
-        printTwoSubArrays(arr);
+        // Two Loops
+        int leftSum = 0;
+        for(int i = 0; i < arr.length; i++) {
+            leftSum += arr[i];
+        }
+
+        int rightSum = 0;
+        for(int i = arr.length-1; i >= 0; i--) {
+            rightSum += arr[i];
+            leftSum -= arr[i];
+
+            if(leftSum == rightSum) {
+                System.out.println(leftSum);
+                System.out.println(rightSum);
+            }
+        }
+
+
+
     }
 }
