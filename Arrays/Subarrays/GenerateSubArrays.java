@@ -12,6 +12,7 @@ public class GenerateSubArrays {
             ArrayList<Integer> subArray = new ArrayList<>();
             for(int j = i; j < arr.length; j++) {
                 subArray.add(arr[j]);
+                System.out.println("Hello");
                 ans.add(new ArrayList<>(subArray));
             }
         }
